@@ -20,6 +20,9 @@ class AccountModel(Document):
     pw = StringField(
         required=True
     )
+    name = StringField(
+        required=True
+    )
 
     is_admin = BooleanField()
 

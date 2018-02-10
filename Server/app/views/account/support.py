@@ -18,7 +18,7 @@ class SchoolSearch(BaseResource):
         """
         학교 검색
         """
-        keyword = request.json['keyword']
+        keyword = request.args['keyword']
 
         regex = re.compile('.*{}.*'.format(keyword))
 

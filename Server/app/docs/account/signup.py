@@ -15,6 +15,13 @@ SIGNUP_POST = {
             'in': 'json',
             'type': 'str',
             'required': True
+        },
+        {
+            'name': 'name',
+            'description': '사용자 이름',
+            'in': 'json',
+            'type': 'str',
+            'required': True
         }
     ],
     'responses': {

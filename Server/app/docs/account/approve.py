@@ -17,10 +17,12 @@ APPROVE_SIGNUP_GET = {
                 '': [
                     {
                         'id': 'planb',
+                        'name': '김형규',
                         'admissionYear': 2017
                     },
                     {
                         'id': 'planb2',
+                        'name': '김규형',
                         'admissionYear': 2016
                     }
                 ]

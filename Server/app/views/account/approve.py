@@ -24,6 +24,7 @@ class ApproveSignup(BaseResource):
 
         return self.unicode_safe_json_response([{
             'id': user.id,
+            'name': user.name,
             'admissionYear': user.admission_year
         } for user in AccountModel.objects(accepted=False, school=user.school)])
 

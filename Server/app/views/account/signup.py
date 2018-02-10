@@ -22,6 +22,7 @@ class Signup(BaseResource):
         """
         id = request.json['id']
         pw = request.json['pw']
+        name = request.json['name']
 
         hashed_pw = generate_password_hash(pw)
 
@@ -30,7 +31,8 @@ class Signup(BaseResource):
 
         AccountModel(
             id=id,
-            pw=hashed_pw
+            pw=hashed_pw,
+            name=name
         ).save()
 
         return Response('', 201)
