@@ -1,12 +1,15 @@
+from uuid import uuid4
+
 from flask import Blueprint, Response
 from flask_jwt_extended import create_access_token, create_refresh_token
 from flask_jwt_extended import get_jwt_identity, jwt_refresh_token_required
-from flask_restful import Api, current_app, request
+from flask_restful import Api, request
 from flasgger import swag_from
+from werkzeug.security import generate_password_hash
 
 from app.docs.account.auth import *
 from app.models.account import ServiceAccountModel, SNSAccountModel, RefreshTokenModel
-from app.views import BaseResource, auth_required, json_required
+from app.views import BaseResource, json_required
 
 api = Api(Blueprint('account-auth-api', __name__))
 
@@ -19,24 +22,24 @@ class Auth(BaseResource):
         """
         서비스 자체 계정 로그인
         """
+        id = request.json['id']
+        pw = request.json['pw']
 
+        hashed_pw = generate_password_hash(pw)
+        user = ServiceAccountModel.objects(id=id, pw=hashed_pw).first()
 
-@api.resource('/auth/sns')
-class SNSAuth(BaseResource):
-    @swag_from(SNS_AUTH_POST)
-    @json_required
-    def post(self):
-        """
-        SNS 계정으로 로그인
-        """
+        if not user:
+            return Response('', 401)
 
+        refresh_token = uuid4()
+        RefreshTokenModel(
+            token=refresh_token,
+            token_owner=user,
+            pw_snapshot=pw
+        ).save()
+        # Generate new refresh token made up of uuid4
 
-@api.resource('/refresh')
-class Refresh(BaseResource):
-    @swag_from(REFRESH_GET)
-    @jwt_refresh_token_required
-    def get(self):
-        """
-        JWT Token refresh
-        """
-
+        return {
+            'accessToken': create_access_token(id),
+            'refreshToken': create_refresh_token(str(refresh_token))
+        }, 200
