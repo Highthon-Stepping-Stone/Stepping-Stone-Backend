@@ -29,12 +29,12 @@ SIGNUP_POST = {
 
 ADDITIONAL_INFO_POST = {
     'tags': ['계정'],
-    'description': 'SNS 연동 시, 사용자 추가 정보 입력. 해당 정보가 따로 업로드되지 않을 시 기본값으로 처리되고, 이미 정보가 있는 경우 덮어씌워 집니다.',
+    'description': 'SNS 계정 최초 로그인, 혹은 서비스 자체 회원가입 시 사용자 추가 정보 입력. 해당 정보가 따로 업로드되지 않을 시 기본값으로 처리되고, 이미 정보가 있는 경우 덮어씌워 집니다.',
     'parameters': [
         {
-            'name': 'Authorization',
-            'description': 'JWT Token(JWT ***)',
-            'in': 'header',
+            'name': 'id',
+            'description': '사용자 ID',
+            'in': 'json',
             'type': 'str',
             'required': True
         },
