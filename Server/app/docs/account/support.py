@@ -28,3 +28,44 @@ SCHOOL_POST = {
         }
     }
 }
+
+INFO_GET = {
+    'tags': ['계정'],
+    'description': '자신과 소속 학교 관련 정보 획득',
+    'parameters': [
+        {
+            'name': 'Authorization',
+            'description': 'JWT Token(JWT ***)',
+            'in': 'header',
+            'type': 'str',
+            'required': True
+        }
+    ],
+    'responses': {
+        '200': {
+            'description': '성공',
+            'examples': {
+                '': {
+                    'isAdmin': True,
+                    'members': [
+                        {
+                            'id': 'planb',
+                            'name': '윤여횐',
+                            'admissionYear': 2000,
+                            'isAdmin': False
+                        },
+                        {
+                            'id': 'planb2',
+                            'name': '정경서',
+                            'admissionYear': 2010,
+                            'isAdmin': False
+                        }
+                    ]
+                }
+            }
+        },
+        '403': {
+            'description': '권한 없거나 소속 학교 없음'
+        }
+    }
+}
