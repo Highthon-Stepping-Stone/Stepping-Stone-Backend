@@ -57,3 +57,6 @@ class Router(object):
         app.register_blueprint(auth.api.blueprint)
         app.register_blueprint(signup.api.blueprint)
         app.register_blueprint(support.api.blueprint)
+
+        from app.views.album import album
+        app.register_blueprint(album.api.blueprint)
