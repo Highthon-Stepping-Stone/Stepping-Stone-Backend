@@ -42,7 +42,7 @@ class Auth(BaseResource):
         return {
             'accessToken': create_access_token(id),
             'refreshToken': create_refresh_token(str(refresh_token))
-        }, 200
+        }
 
 
 @api.resource('/auth/sns')
@@ -97,4 +97,4 @@ class Refresh(BaseResource):
 
         return {
             'accessToken': create_access_token(token.token_owner.id)
-        }, 200
+        }
