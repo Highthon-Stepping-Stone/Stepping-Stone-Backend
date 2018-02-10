@@ -11,6 +11,7 @@ from app.views import BaseResource, auth_required, json_required
 api = Api(Blueprint('account-auth-api', __name__))
 
 
+@api.resource('/auth')
 class Auth(BaseResource):
     @swag_from(AUTH_POST)
     @json_required
@@ -20,6 +21,7 @@ class Auth(BaseResource):
         """
 
 
+@api.resource('/auth/sns')
 class SNSAuth(BaseResource):
     @swag_from(SNS_AUTH_POST)
     @json_required
@@ -29,6 +31,7 @@ class SNSAuth(BaseResource):
         """
 
 
+@api.resource('/refresh')
 class Refresh(BaseResource):
     @swag_from(REFRESH_GET)
     @jwt_refresh_token_required

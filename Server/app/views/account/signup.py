@@ -8,6 +8,7 @@ from app.views import BaseResource, auth_required, json_required
 api = Api(Blueprint('account-signup-api', __name__))
 
 
+@api.resource('/signup')
 class Signup(BaseResource):
     @swag_from(SIGNUP_POST)
     @json_required
@@ -17,6 +18,7 @@ class Signup(BaseResource):
         """
 
 
+@api.resource('/additional-info')
 class AdditionalInfo(BaseResource):
     @swag_from(ADDITIONAL_INFO_POST)
     @json_required
