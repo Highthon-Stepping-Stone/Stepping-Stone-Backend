@@ -40,9 +40,16 @@ class AccountModel(Document):
     # 가입 요청을 이미 보냈는지의 여부
 
     signed = BooleanField(
-        required=True
+        required=True,
+        default=False
     )
     # 학교 가입 상태
+
+    waiting = BooleanField(
+        required=True,
+        default=False
+    )
+    # 가입 요청의 응답을 기다리고 있는지의 여부
 
     school = ReferenceField(
         document_type=SchoolModel

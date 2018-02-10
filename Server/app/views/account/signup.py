@@ -9,7 +9,7 @@ from app.models.account import AccountModel
 from app.models.school import SchoolModel
 from app.views import BaseResource, auth_required, json_required
 
-from utils import school_parser
+# from utils import school_parser
 
 api = Api(Blueprint('account-signup-api', __name__))
 
@@ -62,7 +62,7 @@ class SchoolSignup(BaseResource):
         if AccountModel.objects(school=school).count() == 0:
             # 해당 학교의 첫 가입자가 관리자
             is_admin = True
-            school_parser.parse_school_schedules(school_id)
+            # school_parser.parse_school_schedules(school_id)
         else:
             is_admin = False
 
@@ -70,7 +70,8 @@ class SchoolSignup(BaseResource):
         user.update(
             is_admin=is_admin,
             requested=True,
-            signed=True if is_admin else None,
+            signed=True if is_admin else False,
+            waiting=False if is_admin else True,
             school=school,
             admission_year=admission_year
         )
@@ -88,5 +89,5 @@ class SchoolSignup(BaseResource):
         return {
             'schoolName': user.school.name if user.school else None,
             'requested': user.requested,
-            'signed': user.signed
+            'signed': None if user.waiting else user.signed
         }
