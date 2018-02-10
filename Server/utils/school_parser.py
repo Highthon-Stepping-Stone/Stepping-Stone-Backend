@@ -56,11 +56,36 @@ def parse_school_list_from_excel():
 
 
 def parse_school_schedules(school_id):
-    school = SchoolModel.objects(school_id=school_id).first()
+    # school = SchoolModel.objects(school_id=school_id).first()
+    #
+    # for year in range(2017, 2019):
+    #     for month in range(1, 13):
+    #         resp = get(_url.format(school.web_url, school.school_id, year, month))
+    #         soup = BeautifulSoup(resp.text, 'html.parser')
+    #
+    #         print(resp.url)
+    temp_url = 'http://dsmhs.djsch.kr/scheduleH/list.do?section={}&schdYear={}'
+    # TODO 나이스 자체 문제로 인해 학사일정 파싱이 불가능하므로 대마고 기준 데이터로 채움
 
-    for year in range(2017, 2019):
-        for month in range(1, 13):
-            resp = get(_url.format(school.web_url, school.school_id, year, month))
+    schedules = {}
+
+    for year in (2017, 2018):
+        for section in (1, 2):
+            resp = get(temp_url.format(section, year))
             soup = BeautifulSoup(resp.text, 'html.parser')
 
-            print(resp.url)
+            calendars = soup.select('div.calendar')
+            for calendar in calendars:
+                year, month = re.findall('\d+', calendar.select_one('div span').text)
+                schedule_list = calendar.select('li')
+
+                for schedule in schedule_list:
+                    day, schedule_name = schedule.text.split('일\xa0:\xa0')
+
+                    if '~' in day:
+                        continue
+
+                    schedules['{0}-{1:0>2}-{2:0>2}'.format(year, month, day)] = schedule_name
+
+    school = SchoolModel.objects(school_id='G100000170').first()
+    school.update(schedules=schedules)
