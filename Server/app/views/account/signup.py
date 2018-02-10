@@ -50,7 +50,7 @@ class SchoolSignup(BaseResource):
         school_id = request.json['schoolId']
         admission_year = request.json['admissionYear']
 
-        if len(school_id) != 24:
+        if len(school_id) != 10:
             return Response('', 204)
 
         school = SchoolModel.objects(school_id=school_id).first()

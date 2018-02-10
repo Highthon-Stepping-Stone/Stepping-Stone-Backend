@@ -1,4 +1,4 @@
-APPROVE_SIGNUP_GET = {
+APPROVE_SIGNUP_LIST_POST = {
     'tags': ['가입 승인'],
     'description': '가입 승인 요청자 목록 조회',
     'parameters': [

@@ -10,10 +10,10 @@ from app.views import BaseResource
 api = Api(Blueprint('account-approve-api', __name__))
 
 
-@api.resource('/signup/approve')
-class ApproveSignup(BaseResource):
-    @swag_from(APPROVE_SIGNUP_GET)
-    def get(self):
+@api.resource('/signup/approve/list')
+class ApproveSignupList(BaseResource):
+    @swag_from(APPROVE_SIGNUP_LIST_POST)
+    def post(self):
         """
         가입 승인 요청자 목록 조회
         """
@@ -28,6 +28,9 @@ class ApproveSignup(BaseResource):
             'admissionYear': user.admission_year
         } for user in AccountModel.objects(accepted=False, school=user.school)])
 
+
+@api.resource('/signup/approve')
+class ApproveSignup(BaseResource):
     @swag_from(APPROVE_SIGNUP_POST)
     def post(self):
         """
@@ -45,7 +48,7 @@ class ApproveSignup(BaseResource):
         if not user:
             return Response('', 204)
 
-        user.update(accepted=True)
+        user.update(signed=True)
 
         return Response('', 200)
 
