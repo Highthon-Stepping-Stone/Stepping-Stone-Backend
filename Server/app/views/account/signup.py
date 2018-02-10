@@ -70,7 +70,7 @@ class SchoolSignup(BaseResource):
         user.update(
             is_admin=is_admin,
             requested=True,
-            signed=True if is_admin else False,
+            signed=True if is_admin else None,
             school=school,
             admission_year=admission_year
         )

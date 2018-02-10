@@ -40,8 +40,7 @@ class AccountModel(Document):
     # 가입 요청을 이미 보냈는지의 여부
 
     signed = BooleanField(
-        required=True,
-        default=False
+        required=True
     )
     # 학교 가입 상태
 

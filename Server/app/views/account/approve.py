@@ -67,6 +67,6 @@ class ApproveSignup(BaseResource):
         if not user:
             return Response('', 204)
 
-        user.update(requested=False)
+        user.update(signed=False)
 
         return Response('', 200)

@@ -89,7 +89,8 @@ SCHOOL_SIGNUP_GET = {
             signed는 자신의 학교 가입 상태를 의미합니다.(true: 가입됨, false: 가입되지 않음)
             - 가능한 조합은
             requested: true, signed: true = 가입 요청을 보냈으며, 승인받아 가입된 상태
-            requested: true, signed: false = 가입 요청을 보냈으며, 관리자가 아직 처리하지 않은 상태
+            requested: true, signed: false = 가입 요청을 보냈으나 관리자가 거절한 상태
+            requested: true, signed: null = 가입 요청을 보냈으며, 관리자가 아직 처리하지 않은 상태
             requested: false, signed: false = 가입 요청을 보내지 않았고, 가입되지 않은 상태
             requested: false, signed: true = 해당 경우 없음
             """,
