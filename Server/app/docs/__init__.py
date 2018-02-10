@@ -14,6 +14,10 @@ TEMPLATE = {
         {
             'name': '가입 승인',
             'description': '각 학교의 admin을 위한 가입 승인/거절 관련 API'
+        },
+        {
+            'name': '앨범',
+            'description': '앨범의 사진 조회와 추가 등을 위한 API'
         }
     ]
 }
