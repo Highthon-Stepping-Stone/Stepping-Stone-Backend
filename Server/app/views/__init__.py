@@ -1,8 +1,20 @@
+from functools import wraps
 import ujson
 import time
 
 from flask import Response
-from flask_restful import Resource
+from flask_restful import Resource, abort, request
+
+
+def json_required(fn):
+    @wraps(fn)
+    def wrapper(*args, **kwargs):
+        if not request.is_json:
+            abort(406)
+
+        return fn(*args, **kwargs)
+
+    return wrapper
 
 
 class BaseResource(Resource):
@@ -24,5 +36,4 @@ class Router(object):
             self.init_app(app)
 
     def init_app(self, app):
-        from app.views import sample
-        app.register_blueprint(sample.api.blueprint)
+        pass
