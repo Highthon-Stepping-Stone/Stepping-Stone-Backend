@@ -52,4 +52,7 @@ class Router(object):
             self.init_app(app)
 
     def init_app(self, app):
-        pass
+        from app.views.account import auth, signup, support
+        app.register_blueprint(auth.api.blueprint)
+        app.register_blueprint(signup.api.blueprint)
+        app.register_blueprint(support.api.blueprint)
