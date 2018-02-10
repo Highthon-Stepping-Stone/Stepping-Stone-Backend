@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from app.models import *
+from app.models.school import SchoolModel
 
 
 class AccountBase(Document):
@@ -18,9 +19,10 @@ class AccountBase(Document):
         primary_key=True
     )
 
-    school_name = StringField(
+    school = ReferenceField(
+        document_type=SchoolModel,
         required=True,
-        default='학교 없음'
+        default=SchoolModel()
     )
     grade = IntField(
         required=True,
@@ -29,6 +31,10 @@ class AccountBase(Document):
     class_ = IntField(
         required=True,
         default=1
+    )
+    admission_year = IntField(
+        required=True,
+        default=2018
     )
 
 

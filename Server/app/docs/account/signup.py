@@ -58,6 +58,13 @@ ADDITIONAL_INFO_POST = {
             'in': 'json',
             'type': 'int',
             'required': True
+        },
+        {
+            'name': 'admissionYear',
+            'description': '입학년도',
+            'in': 'json',
+            'type': 'int',
+            'required': True
         }
     ],
     'responses': {

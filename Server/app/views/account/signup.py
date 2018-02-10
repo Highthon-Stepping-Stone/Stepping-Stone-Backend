@@ -46,6 +46,7 @@ class AdditionalInfo(BaseResource):
         school_id = request.json['schoolId']
         grade = request.json['grade']
         class_ = request.json['class']
+        admission_year = request.json['admissionYear']
 
         if len(school_id) != 24:
             return Response('', 204)
@@ -59,7 +60,8 @@ class AdditionalInfo(BaseResource):
         user.update(
             school_id=school.id,
             grade=grade,
-            class_=class_
+            class_=class_,
+            admission_year=admission_year
         )
 
         return Response('', 201)
