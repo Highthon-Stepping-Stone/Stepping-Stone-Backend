@@ -44,7 +44,6 @@ class ApproveSignup(BaseResource):
         id = request.json['id']
 
         user = AccountModel.objects(id=id).first()
-
         if not user:
             return Response('', 204)
 
@@ -65,6 +64,9 @@ class ApproveSignup(BaseResource):
         id = request.json['id']
 
         user = AccountModel.objects(id=id).first()
-
         if not user:
             return Response('', 204)
+
+        user.update(requested=False)
+
+        return Response('', 200)
