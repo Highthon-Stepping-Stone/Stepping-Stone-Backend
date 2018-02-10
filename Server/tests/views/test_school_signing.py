@@ -25,7 +25,7 @@ class TestSchoolSignup(TCBase):
         # Get random school id
         res = self.client.post(
             '/school',
-            data=json.dumps({'keyword': '대덕'}),
+            data=json.dumps({'keyword': '대덕소프트웨어'}),
             content_type='application/json'
         )
         self.assertEqual(res.status_code, 200)

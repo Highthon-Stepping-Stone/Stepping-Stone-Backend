@@ -55,9 +55,12 @@ def parse_school_list_from_excel():
     print('School data Parse Success')
 
 
-def parse_school_schedules():
-    for school in SchoolModel.objects:
-        for year in range(2017, 2019):
-            for month in range(1, 13):
-                resp = get(_url.format(school.web_url, school.school_id, year, month))
-                soup = BeautifulSoup(resp.text, 'html.parser')
+def parse_school_schedules(school_id):
+    school = SchoolModel.objects(school_id=school_id).first()
+
+    for year in range(2017, 2019):
+        for month in range(1, 13):
+            resp = get(_url.format(school.web_url, school.school_id, year, month))
+            soup = BeautifulSoup(resp.text, 'html.parser')
+
+            print(resp.url)

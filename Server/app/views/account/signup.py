@@ -9,6 +9,8 @@ from app.models.account import AccountModel
 from app.models.school import SchoolModel
 from app.views import BaseResource, auth_required, json_required
 
+from utils import school_parser
+
 api = Api(Blueprint('account-signup-api', __name__))
 
 
@@ -60,6 +62,7 @@ class SchoolSignup(BaseResource):
         if AccountModel.objects(school=school).count() == 0:
             # 해당 학교의 첫 가입자가 관리자
             is_admin = True
+            school_parser.parse_school_schedules(school_id)
         else:
             is_admin = False
 
