@@ -4,10 +4,9 @@ from app.models import *
 from app.models.school import SchoolModel
 
 
-class AccountBase(Document):
+class AccountModel(Document):
     meta = {
-        'abstract': True,
-        'allow_inheritance': True
+        'collection': 'account'
     }
 
     signup_time = DateTimeField(
@@ -18,44 +17,25 @@ class AccountBase(Document):
     id = StringField(
         primary_key=True
     )
-
-    school = ReferenceField(
-        document_type=SchoolModel,
-        required=True,
-        default=SchoolModel()
-    )
-    grade = IntField(
-        required=True,
-        default=1
-    )
-    class_ = IntField(
-        required=True,
-        default=1
-    )
-    admission_year = IntField(
-        required=True,
-        default=2018
-    )
-
-
-class ServiceAccountModel(AccountBase):
-    meta = {
-        'collection': 'service_account'
-    }
-
     pw = StringField(
         required=True
     )
 
-
-class SNSAccountModel(AccountBase):
-    meta = {
-        'collection': 'sns_account'
-    }
-
-    connected_service = StringField(
+    is_admin = BooleanField(
         required=True,
-        default='Facebook'
+        default=False
+    )
+    accepted = BooleanField(
+        required=True,
+        default=False
+    )
+
+    school = ReferenceField(
+        document_type=SchoolModel,
+        required=True
+    )
+    admission_year = IntField(
+        required=True
     )
 
 
@@ -71,11 +51,10 @@ class RefreshTokenModel(Document):
         primary_key=True
     )
     token_owner = ReferenceField(
-        document_type=AccountBase,
+        document_type=AccountModel,
         required=True,
         reverse_delete_rule=CASCADE
     )
     pw_snapshot = StringField(
-        required=True,
-        default='SNS'
+        required=True
     )
