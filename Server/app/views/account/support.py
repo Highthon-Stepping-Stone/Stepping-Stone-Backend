@@ -4,7 +4,7 @@ from flask import Blueprint
 from flask_restful import Api, request
 from flasgger import swag_from
 
-from app.docs.account.support import SCHOOL_GET
+from app.docs.account.support import *
 from app.models.school import SchoolModel
 from app.views import BaseResource
 
