@@ -52,7 +52,8 @@ SCHEDULED_ALBUM_GET = {
             'examples': {
                 '': [
                     {
-                        '2018-01-01': {
+                        'date': '2018-01-01',
+                        'resource': {
                             'scheduleNames': ['새해', '마이스터고 협의회'],
                             'folder': {
                                 # 'folderId': '0eb129d8c528d872a153c',
@@ -66,7 +67,8 @@ SCHEDULED_ALBUM_GET = {
                         }
                     },
                     {
-                        '2018-02-05': {
+                        'date': '2018-02-05',
+                        'resource': {
                             'scheduleNames': ['개학식', '듣기평가'],
                             'folder': {
                                 # 'folderId': '0eb129d8c528d872a153c',
