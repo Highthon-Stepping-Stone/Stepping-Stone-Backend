@@ -70,5 +70,6 @@ class RefreshTokenModel(Document):
         reverse_delete_rule=CASCADE
     )
     pw_snapshot = StringField(
-        required=True
+        required=True,
+        default='SNS'
     )
