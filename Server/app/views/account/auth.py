@@ -3,7 +3,7 @@ from uuid import uuid4
 from flask import Blueprint, Response
 from flask_jwt_extended import create_access_token, create_refresh_token
 from flask_jwt_extended import get_jwt_identity, jwt_refresh_token_required
-from flask_restful import Api, request
+from flask_restful import abort, Api, request
 from flasgger import swag_from
 from werkzeug.security import generate_password_hash
 
@@ -29,7 +29,7 @@ class Auth(BaseResource):
         user = ServiceAccountModel.objects(id=id, pw=hashed_pw).first()
 
         if not user:
-            return Response('', 401)
+            return abort(401)
 
         refresh_token = uuid4()
         RefreshTokenModel(

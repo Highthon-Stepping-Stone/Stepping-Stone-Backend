@@ -64,6 +64,9 @@ ADDITIONAL_INFO_POST = {
         '201': {
             'description': '업로드 성공'
         },
+        '204': {
+            'description': '존재하지 않는 school id'
+        },
         '403': {
             'description': '권한 없음'
         }
