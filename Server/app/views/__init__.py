@@ -4,6 +4,22 @@ import time
 
 from flask import Response
 from flask_restful import Resource, abort, request
+from flask_jwt_extended import get_jwt_identity, jwt_required
+
+from app.models.account import AccountBase
+
+
+def auth_required(fn):
+    @wraps(fn)
+    @jwt_required
+    def wrapper(*args, **kwargs):
+        user = AccountBase.objects(id=get_jwt_identity()).first()
+        if not user:
+            abort(403)
+
+        return fn(*args, **kwargs)
+
+    return wrapper
 
 
 def json_required(fn):
