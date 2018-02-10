@@ -25,7 +25,7 @@ def auth_required(fn):
 def json_required(fn):
     @wraps(fn)
     def wrapper(*args, **kwargs):
-        if not request.is_json:
+        if not request.is_json():
             abort(406)
 
         return fn(*args, **kwargs)
