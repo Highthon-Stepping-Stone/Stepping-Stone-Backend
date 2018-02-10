@@ -25,7 +25,7 @@ def auth_required(fn):
 def json_required(fn):
     @wraps(fn)
     def wrapper(*args, **kwargs):
-        if not request.is_json():
+        if not request.is_json:
             abort(406)
 
         return fn(*args, **kwargs)
@@ -52,7 +52,8 @@ class Router(object):
             self.init_app(app)
 
     def init_app(self, app):
-        from app.views.account import auth, signup, support
+        from app.views.account import approve, auth, signup, support
+        app.register_blueprint(approve.api.blueprint)
         app.register_blueprint(auth.api.blueprint)
         app.register_blueprint(signup.api.blueprint)
         app.register_blueprint(support.api.blueprint)
