@@ -13,12 +13,12 @@ api = Api(Blueprint('account-support-api', __name__))
 
 @api.resource('/school')
 class SchoolSearch(BaseResource):
-    @swag_from(SCHOOL_GET)
-    def get(self):
+    @swag_from(SCHOOL_POST)
+    def post(self):
         """
         학교 검색
         """
-        keyword = request.args['keyword']
+        keyword = request.json['keyword']
 
         regex = re.compile('.*{}.*'.format(keyword))
 

@@ -1,6 +1,6 @@
 from uuid import uuid4
 
-from flask import Blueprint, Response
+from flask import Blueprint
 from flask_jwt_extended import create_access_token, create_refresh_token
 from flask_jwt_extended import get_jwt_identity, jwt_refresh_token_required
 from flask_restful import abort, Api, request
@@ -48,9 +48,9 @@ class Auth(BaseResource):
 
 @api.resource('/refresh')
 class Refresh(BaseResource):
-    @swag_from(REFRESH_GET)
+    @swag_from(REFRESH_POST)
     @jwt_refresh_token_required
-    def get(self):
+    def post(self):
         """
         새로운 Access Token 획득
         """

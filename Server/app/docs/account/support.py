@@ -1,11 +1,11 @@
-SCHOOL_GET = {
+SCHOOL_POST = {
     'tags': ['계정'],
     'description': '학교 검색',
     'parameters': [
         {
             'name': 'keyword',
             'description': '검색 시 사용할 keyword',
-            'in': 'query',
+            'in': 'json',
             'type': 'str',
             'required': True
         }

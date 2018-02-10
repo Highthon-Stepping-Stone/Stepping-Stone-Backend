@@ -83,8 +83,7 @@ class SchoolSignup(BaseResource):
         user = AccountModel.objects(id=get_jwt_identity()).first()
 
         return {
-            'schoolName': user.school.name,
+            'schoolName': user.school.name if user.school else None,
             'requested': user.requested,
             'signed': user.signed
-            # null(None)은 아직 처리되지 않음, True는 수락, False는 거절됨
         }

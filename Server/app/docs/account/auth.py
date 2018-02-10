@@ -33,7 +33,7 @@ AUTH_POST = {
     }
 }
 
-REFRESH_GET = {
+REFRESH_POST = {
     'tags': ['계정'],
     'description': 'JWT Token refresh. 새로운 access token을 얻습니다.',
     'parameters': [

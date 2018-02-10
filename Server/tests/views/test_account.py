@@ -42,7 +42,7 @@ class TestAccount(TCBase):
         self.assertEqual(res.status_code, 401)
 
     def testC_refresh(self):
-        res = self.client.get(
+        res = self.client.post(
             '/refresh',
             headers={'Authorization': self.refresh_token}
         )
