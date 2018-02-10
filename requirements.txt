@@ -3,32 +3,54 @@
 
 # Server/app/__init__.py: 1
 # Server/app/views/__init__.py: 5
-# Server/app/views/account/auth.py: 1
+# Server/app/views/account/approve.py: 1
+# Server/app/views/account/auth.py: 3
 # Server/app/views/account/signup.py: 1
-# Server/app/views/account/support.py: 1
-Flask == 0.10.1
+# Server/app/views/account/support.py: 3
+Flask == 0.12.2
 
 # Server/app/__init__.py: 2
 Flask_Cors == 3.0.3
 
+# Server/app/__init__.py: 3
 # Server/app/views/__init__.py: 7
-# Server/app/views/account/auth.py: 3
+# Server/app/views/account/approve.py: 2
+# Server/app/views/account/auth.py: 5
+# Server/app/views/account/signup.py: 2
 Flask_JWT_Extended == 3.6.0
 
 # Server/app/views/__init__.py: 6
-# Server/app/views/account/auth.py: 4
-# Server/app/views/account/signup.py: 2
-# Server/app/views/account/support.py: 2
-Flask_RESTful == 0.3.3
-
-# Server/app/__init__.py: 3
-# Server/app/views/account/auth.py: 5
+# Server/app/views/account/approve.py: 3
+# Server/app/views/account/auth.py: 6
 # Server/app/views/account/signup.py: 3
-# Server/app/views/account/support.py: 3
+# Server/app/views/account/support.py: 4
+Flask_RESTful == 0.3.6
+
+# Server/app/views/account/auth.py: 8,9
+# Server/app/views/account/signup.py: 5
+Werkzeug == 0.14.1
+
+# Server/utils/school_parser.py: 2
+beautifulsoup4 == 4.6.0
+
+# Server/app/__init__.py: 4
+# Server/app/views/account/approve.py: 4
+# Server/app/views/account/auth.py: 7
+# Server/app/views/account/signup.py: 4
+# Server/app/views/account/support.py: 5
 flasgger == 0.8.0
 
 # Server/app/models/__init__.py: 1
 mongoengine == 0.15.0
 
+# Server/utils/school_parser.py: 5
+openpyxl == 2.5.0
+
+# Server/utils/school_parser.py: 1
+requests == 2.18.4
+
 # Server/app/views/__init__.py: 2
 ujson == 1.35
+
+# Server/tests/views/test_account.py: 4
+yarg == 0.1.9
