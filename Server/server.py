@@ -12,4 +12,8 @@ if __name__ == '__main__':
     parser.add_argument('-p', '--port')
     args = parser.parse_args()
 
+    from utils import school_parser
+    school_parser.parse_school_list_from_excel()
+    # school_parser.parse_school_schedules()
+
     app.run(host=app.config['HOST'], port=int(args.port) if args.port else app.config['PORT'], debug=app.debug, threaded=True)
