@@ -54,9 +54,9 @@ REFRESH_GET = {
                 }
             }
         },
-        '205': {
-            'description': '해당 refresh token 발급 시 사용한 비밀번호가 변경되어 재로그인 필요'
-        },
+        # '205': {
+        #     'description': '해당 refresh token 발급 시 사용한 비밀번호가 변경되어 재로그인 필요'
+        # },
         '403': {
             'description': '권한 없음'
         }
