@@ -64,7 +64,7 @@ class ScheduledAlbum(BaseResource):
         album = ScheduledAlbumModel.objects(school=school).first()
         folders = ScheduledFolderModel.objects(album=album)
 
-        response = {date: {'scheduleNames': schedules, 'folder': {}} for date, schedules in school.schedules.items()}
+        response = [{date: {'scheduleNames': schedules, 'folder': {}}} for date, schedules in school.schedules.items()]
 
         for folder in folders:
             if folder.assigned_date not in response:

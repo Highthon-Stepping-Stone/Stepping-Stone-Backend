@@ -50,28 +50,32 @@ SCHEDULED_ALBUM_GET = {
         '200': {
             'description': '데이터 불러오기 성공.',
             'examples': {
-                '': {
-                    '2018-01-01': {
-                        'scheduleNames': ['새해', '마이스터고 협의회'],
-                        'folder': {
-                            # 'folderId': '0eb129d8c528d872a153c',
-                            'imageNames': [
-                                '2903bff771534e00b64fb1e053684994.png',
-                                'da9f07cb5ba541d8a3a3ed97838d8c43.png',
-                                'c05307c463924c5fb8db74314650036a.png'
-                            ],
-                            'imageCount': 3
+                '': [
+                    {
+                        '2018-01-01': {
+                            'scheduleNames': ['새해', '마이스터고 협의회'],
+                            'folder': {
+                                # 'folderId': '0eb129d8c528d872a153c',
+                                'imageNames': [
+                                    '2903bff771534e00b64fb1e053684994.png',
+                                    'da9f07cb5ba541d8a3a3ed97838d8c43.png',
+                                    'c05307c463924c5fb8db74314650036a.png'
+                                ],
+                                'imageCount': 3
+                            }
                         }
                     },
-                    '2018-02-05': {
-                        'scheduleNames': ['개학식', '듣기평가'],
-                        'folder': {
-                            # 'folderId': '0eb129d8c528d872a153c',
-                            'imageNames': [],
-                            'imageCount': 0
+                    {
+                        '2018-02-05': {
+                            'scheduleNames': ['개학식', '듣기평가'],
+                            'folder': {
+                                # 'folderId': '0eb129d8c528d872a153c',
+                                'imageNames': [],
+                                'imageCount': 0
+                            }
                         }
                     }
-                }
+                ]
             }
         },
         '403': {
