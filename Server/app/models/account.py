@@ -21,22 +21,22 @@ class AccountModel(Document):
         required=True
     )
 
-    is_admin = BooleanField(
+    is_admin = BooleanField()
+
+    requested = BooleanField(
         required=True,
         default=False
     )
-    accepted = BooleanField(
+    # 가입 요청을 이미 보냈는지의 여부
+    signed = BooleanField(
         required=True,
         default=False
     )
 
     school = ReferenceField(
-        document_type=SchoolModel,
-        required=True
+        document_type=SchoolModel
     )
-    admission_year = IntField(
-        required=True
-    )
+    admission_year = IntField()
 
 
 class RefreshTokenModel(Document):
