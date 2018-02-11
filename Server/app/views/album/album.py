@@ -1,4 +1,5 @@
 from uuid import uuid4
+import os
 
 from flask import Blueprint, Response, abort, request
 from flask_jwt_extended import get_jwt_identity
@@ -50,7 +51,7 @@ class ScheduledAlbum(BaseResource):
 
             target_folder.image_names.append(image_full_name)
             print(target_folder.image_names)
-            image.save('static/{}'.format(image_full_name))
+            image.save(os.path.join('static', image_full_name))
 
         target_folder.save()
 
