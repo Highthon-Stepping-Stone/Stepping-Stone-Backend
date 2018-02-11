@@ -4,6 +4,7 @@ import re
 
 from openpyxl import load_workbook
 
+from app.models.album import FreeAlbumModel, ScheduledAlbumModel
 from app.models.school import SchoolModel
 
 _url = 'http://{0}/sts_sci_sf00_001.do?schulCode={1}&schulCrseScCode=4&schulKndScScore=04&ay={2}&mm={3:0>2}'
@@ -50,7 +51,9 @@ def parse_school_list_from_excel():
         name = ws['C' + str(row)].value
         # 학교 이름
 
-        SchoolModel(school_id=code, web_url=web_url, name=name).save()
+        school = SchoolModel(school_id=code, web_url=web_url, name=name).save()
+        ScheduledAlbumModel(school=school).save()
+        FreeAlbumModel(school=school).save()
 
     print('School data Parse Success')
 
