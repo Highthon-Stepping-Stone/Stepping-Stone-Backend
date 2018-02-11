@@ -39,7 +39,6 @@ class ScheduledAlbum(BaseResource):
             ).save()
 
         images = request.files.getlist("file[]")
-        print(images)
 
         for image in images:
             extend = image.filename.split('.')[-1]
@@ -47,9 +46,11 @@ class ScheduledAlbum(BaseResource):
 
             image_name = uuid4().hex
             image_full_name = '{}.{}'.format(image_name, extend)
+            print(image_full_name)
 
             target_folder.image_names.append(image_full_name)
-            image.save('/static/{}'.format(image_full_name))
+            print(target_folder.image_names)
+            image.save('./static/{}'.format(image_full_name))
 
         target_folder.save()
 

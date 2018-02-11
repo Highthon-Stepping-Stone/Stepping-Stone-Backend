@@ -17,8 +17,8 @@ SCHEDULED_ALBUM_POST = {
             'required': True
         },
         {
-            'name': 'file',
-            'description': '어떤 key로든 0개 이상의 파일을 multipart/form-data로 업로드합니다.',
+            'name': 'file[]',
+            'description': 'multipart/form-data로 0개 이상의 파일 업로드',
             'in': 'formData',
             'type': 'file',
             'required': False
