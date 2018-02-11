@@ -8,6 +8,7 @@ from flasgger import swag_from
 from app.docs.album.album import *
 from app.models.account import AccountModel
 from app.models.album import ScheduledAlbumModel, ScheduledFolderModel
+from app.models.school import SchoolModel
 from app.views import BaseResource, auth_required
 
 api = Api(Blueprint('album-api', __name__))
@@ -16,18 +17,19 @@ api = Api(Blueprint('album-api', __name__))
 @api.resource('/album/scheduled')
 class ScheduledAlbum(BaseResource):
     @swag_from(SCHEDULED_ALBUM_POST)
-    @auth_required
+    # @auth_required
     def post(self):
         """
         학사일정 앨범에 사진 추가
         """
         date = request.args['date']
 
-        user = AccountModel.objects(id=get_jwt_identity()).first()
-        if not user:
-            abort(403)
+        # user = AccountModel.objects(id=get_jwt_identity()).first()
+        # if not user:
+        #     abort(403)
 
-        school = user.school
+        # school = user.school
+        school = SchoolModel.objects(school_id='G100000170').first()
         album = ScheduledAlbumModel.objects(school=school).first()
         target_folder = ScheduledFolderModel.objects(album=album).first()
         if not target_folder:
