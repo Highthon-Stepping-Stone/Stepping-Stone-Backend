@@ -50,7 +50,7 @@ class ScheduledAlbum(BaseResource):
 
             target_folder.image_names.append(image_full_name)
             print(target_folder.image_names)
-            image.save('./static/{}'.format(image_full_name))
+            image.save('static/{}'.format(image_full_name))
 
         target_folder.save()
 
