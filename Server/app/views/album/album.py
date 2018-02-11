@@ -39,6 +39,7 @@ class ScheduledAlbum(BaseResource):
             ).save()
 
         images = request.files.getlist("file[]")
+        print(images)
 
         for image in images:
             extend = image.filename.split('.')[-1]
