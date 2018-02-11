@@ -47,8 +47,10 @@ class ScheduledAlbum(BaseResource):
             image_name = uuid4().hex
             image_full_name = '{}.{}'.format(image_name, extend)
 
-            target_folder.image_names.append(image_name)
+            target_folder.image_names.append(image_full_name)
             image.save('/static/{}'.format(image_full_name))
+
+        target_folder.save()
 
         return Response('', 201)
 
